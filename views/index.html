@@ -1,0 +1,62 @@
+<!docType html>
+<html>
+
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script><!-- load angular -->
+<script src="/socket.io/socket.io.js"></script>
+<script src="app.js"></script>
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+
+
+<body ng-app="test" ng-controller="myctrl">
+<div class="jumbotron">Polling Site</div>
+<div><span class="panel"> Total users: {{users.length}} </span></div>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4">
+
+            <div class="card card-inverse card-primary">
+                <img class="card-img-top" src="..." alt="Card image cap">
+                <div class="card-block">
+                    <h4 class="card-title">Card title</h4>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="card card-inverse card-secondary">
+                <img class="card-img-top" src="..." alt="Card image cap">
+                <div class="card-block">
+                    <h4 class="card-title">Card title</h4>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                </div>
+            </div>
+         </div>
+
+
+            <div class="col-lg-4">
+                <div class="card card-inverse card-secondary">
+                    <img class="card-img-top" src="..." alt="Card image cap">
+                    <div class="card-block">
+                        <h4 class="card-title">Card title</h4>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                            the card's content.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <p ng-show="!nameset"><input type="text" ng-model="username"/>
+                    <span><button ng-click="setUserName()">Set Name</button> </span>
+                </p>
+                <p ng-show="nameset"> Hello, {{username}} {{nameset}} </p>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+</html>
