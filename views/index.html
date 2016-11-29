@@ -20,13 +20,13 @@
 <div class="wrapper">
     <div class="row">
         <div class="col-lg-12 col-md-4 col-sm-12">
-            <div class="jumbotron custom"><div></div> <span>Know what everything is <em>thinking.</em></span>
+            <div class="jumbotron custom"><div></div> <span>Know what everyone is <em>thinking.</em></span>
                 <br>
                 <p class="people">
                     <i class="fa fa-comments fa-5x"></i><br>
                     <i class="fa fa-user fa-5x"></i>
                 </p>
-                <h1 class="text-xl-center app-dark"> Get Polling</h1> <br/> <h3 class="text-xl-center app-dark">Have your say NOW</h3>
+                <h1 class="text-xl-center app-dark">Vox Populi</h1> <br/> <h3 class="text-xl-center app-dark">Have your say NOW</h3>
                 <p  ng-show="!nameset" class="text-xl-right"><button class="btn app-btn-dark rounded" ng-click="setUserName()"><i class="fa fa-user">Sign In</i></button>
                     <input type="text" class="app-text-dark" ng-model="username"/>
                 </p>
@@ -38,7 +38,12 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12">
                     <div class="col-lg-4 col-md-4">
-                        One
+                        <div class="app-panel">
+                            <h2 class="text-lg-center mark">Activity <i class="fa fa-line-chart" ></i> </h2>
+                            <div class="">
+                            adfasd
+                            </div>
+                        </div>
                     </div>
                     <div class="col-lg-5 col-md-4">
                         two
@@ -47,13 +52,13 @@
                     <div class="col-lg-3 col-md-4" style="padding: 1.5rem;">
                         <div class="card card-block">
                             <h4 class="card-text app-text-dark">Chat <i class="fa fa-comments-o"></i> </h4>
-                            <p>Live Comments</p>
+                            <hr>
                             <div ng-repeat="aComment in comments | orderBy: '-dtm' " ng-class-even="'mark'" width="100%">
 
                                 <div style="width: 100%;">
                                   <img width="32px" class="img-thumbnail" src="http://www.gravatar.com/avatar/f3b5862b4d38b9b85ce48513e187c8c9.jpg?s=24&d=mm"/>
-                                  <span class="text-lg-left text-danger app-inline" style="width:60%"><a class="app-user" ng-href="/users/{{aComment.user}}"  >{{aComment.user}}</a>   </span>
-                                  <span class="text-xs-right text-muted small app-inline"  style="width:30%">{{aComment.formattedDtm}}</span></div>
+                                  <span class="text-lg-left text-danger app-inline" style="width:50%"><a class="app-user" ng-href="/users/{{aComment.user}}"  >{{aComment.user}}</a>   </span>
+                                  <span class="text-xs-right text-muted small app-inline"  style="width:40%">{{aComment.formattedDtm}}</span></div>
 
                                 <div>{{aComment.cmt}}  <a href="/topics/{{aComment.label}}"> <span class="tag tag-info">#{{aComment.label}}</span> </a> </div>
 

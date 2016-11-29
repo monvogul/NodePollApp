@@ -51,11 +51,19 @@
     display: inline-block;
 }
 
-
-
 .app-user{
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
     max-width: 500px;
+}
+
+.app-panel {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
 }
