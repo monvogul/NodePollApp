@@ -1,0 +1,52 @@
+[
+  {
+    "username": "Reeves",
+    "isActive": true,
+    "picture": "http://placehold.it/32x32",
+    "age": 37,
+    "name": "Walton Bentley",
+    "email": "waltonbentley@zentility.com",
+    "about": "Et reprehenderit aute veniam quis aliquip sunt. Sunt ullamco Lorem quis mollit officia Lorem exercitation pariatur minim. Officia reprehenderit labore quis amet ea laboris minim ullamco.\r\n",
+    "activeSince": "2016-04-27T06:50:18 -10:00"
+  },
+  {
+    "username": "Mcmillan",
+    "isActive": true,
+    "picture": "http://placehold.it/32x32",
+    "age": 36,
+    "name": "Mathews Colon",
+    "email": "mathewscolon@zentility.com",
+    "about": "Qui dolor in exercitation sit veniam adipisicing reprehenderit tempor. Est enim irure sint veniam id et et excepteur nulla aliqua mollit nulla dolore velit. Eiusmod laborum minim et sunt culpa aliquip. Esse culpa consequat non ad duis ex non velit. In occaecat ex excepteur velit amet eiusmod mollit cupidatat aliquip velit ex culpa ullamco. Enim elit aliqua quis in ut magna.\r\n",
+    "activeSince": "2015-11-24T01:32:34 -11:00"
+  },
+  {
+    "username": "Velasquez",
+    "isActive": true,
+    "picture": "http://placehold.it/32x32",
+    "age": 20,
+    "name": "Patel Bonner",
+    "email": "patelbonner@zentility.com",
+    "about": "Fugiat enim sit est minim. Sint ad elit nostrud consequat consequat mollit ad consectetur fugiat. Do excepteur deserunt elit nulla consectetur irure dolor.\r\n",
+    "activeSince": "2016-08-21T04:58:33 -10:00"
+  },
+  {
+    "username": "Garrison",
+    "isActive": false,
+    "picture": "http://placehold.it/32x32",
+    "age": 30,
+    "name": "Russo Collier",
+    "email": "russocollier@zentility.com",
+    "about": "Velit amet nostrud enim aliqua incididunt ea. Pariatur do enim non ullamco excepteur do excepteur qui dolor consequat pariatur do. Pariatur voluptate nulla culpa nostrud est dolor eu ullamco laboris ea est. Eu aliquip consequat cillum elit. Officia aliquip duis quis est in tempor incididunt amet fugiat ea culpa est. Excepteur officia commodo aliquip adipisicing adipisicing magna culpa irure.\r\n",
+    "activeSince": "2016-03-22T11:33:59 -11:00"
+  },
+  {
+    "username": "Beck",
+    "isActive": false,
+    "picture": "http://placehold.it/32x32",
+    "age": 34,
+    "name": "Wiley Gallagher",
+    "email": "wileygallagher@zentility.com",
+    "about": "Ut cupidatat eiusmod aute proident culpa cupidatat nisi cillum cillum aute eiusmod ipsum ex. Incididunt velit magna ullamco in incididunt irure. Sint nulla anim veniam et ea cupidatat minim irure commodo quis nulla. Ipsum ipsum voluptate id commodo est.\r\n",
+    "activeSince": "2014-06-07T03:35:24 -10:00"
+  }
+]

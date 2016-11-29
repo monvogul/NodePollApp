@@ -1,162 +1,78 @@
 <!docType html>
 <html>
 
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+</head>
 
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script><!-- load angular -->
 <script src="/socket.io/socket.io.js"></script>
 <script src="app.js"></script>
 <script src="style/js/sb-admin-2.min.js"></script>
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
-<link rel="stylesheet" href="style/css/sb-admin-2.css">
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+<link rel="stylesheet" href="style/css/bootstrap4.css"><!-- load bootstrap -->
+<link rel="stylesheet" href="style/css/app.css">
+
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
-<body ng-app="test" ng-controller="myctrl">
-<div class="page-wrapper">
-<div class="row">
-    <div class="jumbotron">Polling Site</div>
-</div>
-<div class="row">
-    <div class="col-lg-12">
-
-    <div class="col-lg-3 col-md-6">
-        <div class="panel panel-primary">
-            <div class="panel-heading">
-                <div class="row">
-                    <div class="col-xs-3">
-                        <i class="fa fa-comments fa-5x"></i>
-                    </div>
-                    <div class="col-xs-9 text-right">
-                        <div class="huge">Total users: {{users.length}}</div>
-                        <div>New Comments!</div>
-                    </div>
-                </div>
-            </div>
-            <a href="#">
-                <div class="panel-footer">
-                    <span class="pull-left">View Details</span>
-                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                    <div class="clearfix"></div>
-                </div>
-            </a>
-        </div>
-    </div>
-    <div class="col-lg-3 col-md-6">
-        <div class="panel panel-green">
-            <div class="panel-heading">
-                <div class="row">
-                    <div class="col-xs-3">
-                        <i class="fa fa-tasks fa-5x"></i>
-                    </div>
-                    <div class="col-xs-9 text-right">
-                        <div class="huge">12</div>
-                        <div>New Tasks!</div>
-                    </div>
-                </div>
-            </div>
-            <a href="#">
-                <div class="panel-footer">
-                    <span class="pull-left">View Details</span>
-                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                    <div class="clearfix"></div>
-                </div>
-            </a>
-        </div>
-    </div>
-    <div class="col-lg-3 col-md-6">
-        <div class="panel panel-yellow">
-            <div class="panel-heading">
-                <div class="row">
-                    <div class="col-xs-3">
-                        <i class="fa fa-shopping-cart fa-5x"></i>
-                    </div>
-                    <div class="col-xs-9 text-right">
-                        <div class="huge">124</div>
-                        <div>New Orders!</div>
-                    </div>
-                </div>
-            </div>
-            <a href="#">
-                <div class="panel-footer">
-                    <span class="pull-left">View Details</span>
-                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                    <div class="clearfix"></div>
-                </div>
-            </a>
-        </div>
-    </div>
-    <div class="col-lg-3 col-md-6">
-        <div class="panel panel-red">
-            <div class="panel-heading">
-                <div class="row">
-                    <div class="col-xs-3">
-                        <i class="fa fa-support fa-5x"></i>
-                    </div>
-                    <div class="col-xs-9 text-right">
-                        <div class="huge">13</div>
-                        <div>Support Tickets!</div>
-                    </div>
-                </div>
-            </div>
-            <a href="#">
-                <div class="panel-footer">
-                    <span class="pull-left">View Details</span>
-                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                    <div class="clearfix"></div>
-                </div>
-            </a>
-        </div>
-    </div>
-</div>
-
-
-<div class="container">
+<body ng-app="app" ng-controller="myctrl">
+<div class="wrapper">
     <div class="row">
-        <div class="col-lg-4">
-
-            <div class="card card-inverse card-primary">
-                <img class="card-img-top" src="..." alt="Card image cap">
-                <div class="card-block">
-                    <h4 class="card-title">Card title</h4>
-                    <p class="card-text">content</p>
-                </div>
+        <div class="col-lg-12 col-md-4 col-sm-12">
+            <div class="jumbotron custom"><div></div> <span>Know what everything is <em>thinking.</em></span>
+                <br>
+                <p class="people">
+                    <i class="fa fa-comments fa-5x"></i><br>
+                    <i class="fa fa-user fa-5x"></i>
+                </p>
+                <h1 class="text-xl-center app-dark"> Get Polling</h1> <br/> <h3 class="text-xl-center app-dark">Have your say NOW</h3>
+                <p  ng-show="!nameset" class="text-xl-right"><button class="btn app-btn-dark rounded" ng-click="setUserName()"><i class="fa fa-user">Sign In</i></button>
+                    <input type="text" class="app-text-dark" ng-model="username"/>
+                </p>
+                <h6 ng-show="nameset" class="text-xl-right app-text-dark"> Logged in as {{username}}.  </h6>
             </div>
         </div>
-        <div class="col-lg-4">
-            <div class="card card-inverse card-secondary">
-                <img class="card-img-top" src="..." alt="Card image cap">
-                <div class="card-block">
-                    <h4 class="card-title">Card title</h4>
-                    <p class="card-text">content</p>
 
-                </div>
-            </div>
-         </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <div class="col-lg-4 col-md-4">
+                        One
+                    </div>
+                    <div class="col-lg-5 col-md-4">
+                        two
+                    </div>
+
+                    <div class="col-lg-3 col-md-4" style="padding: 1.5rem;">
+                        <div class="card card-block">
+                            <h4 class="card-text app-text-dark">Chat <i class="fa fa-comments-o"></i> </h4>
+                            <p>Live Comments</p>
+                            <div ng-repeat="aComment in comments | orderBy: '-dtm' " ng-class-even="'mark'" width="100%">
+
+                                <div style="width: 100%;">
+                                  <img width="32px" class="img-thumbnail" src="http://www.gravatar.com/avatar/f3b5862b4d38b9b85ce48513e187c8c9.jpg?s=24&d=mm"/>
+                                  <span class="text-lg-left text-danger app-inline" style="width:60%"><a class="app-user" ng-href="/users/{{aComment.user}}"  >{{aComment.user}}</a>   </span>
+                                  <span class="text-xs-right text-muted small app-inline"  style="width:30%">{{aComment.formattedDtm}}</span></div>
+
+                                <div>{{aComment.cmt}}  <a href="/topics/{{aComment.label}}"> <span class="tag tag-info">#{{aComment.label}}</span> </a> </div>
+
+                            </div>
+                         <hr>
+                         <div> <a href="#">More..</a> </div>
+                        </div>
 
 
-            <div class="col-lg-4">
-                <div class="card card-inverse card-secondary">
-                    <img class="card-img-top" src="..." alt="Card image cap">
-                    <div class="card-block">
-                        <h4 class="card-title">Card title</h4>
-                        <p class="card-text">content</p>
 
                     </div>
                 </div>
             </div>
 
-            <div>
-                <p ng-show="!nameset"><input type="text" ng-model="username"/>
-                    <span><button ng-click="setUserName()">Set Name</button> </span>
-                </p>
-                <p ng-show="nameset"> Hello, {{username}} {{nameset}} </p>
-            </div>
 
-        </div>
-    </div>
-</div>
-</div>
+
+        </div> <!-- row div-->
+     </div>
+    </div> <!--wrapper div -->
 </body>
 
 </html>

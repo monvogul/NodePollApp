@@ -14,38 +14,29 @@ var server = app.listen("8080",function(){ //server listening on 8080
 // Socket.io
 var io = socketIo().listen(server);
 
-// socket.io events
-io.on( "connection", function( socket )
-{
-    console.log( "A user connected" , dataStore.getUserNames());
-
-    socket.emit('getStatsAtStart',dataStore.getUserNames()) ;
-    socket.on( 'userAdd', function( data )
-    {
-      dataStore.addNewUser(data) ;
-      console.log(dataStore);
-      socket.emit('userAdded',dataStore.getUserNames()) ;
-      socket.broadcast.emit('userAdded',dataStore.getUserNames()) ;
-
-    });
-
-});
-
 var allClients = [] ;
 // socket.io events
 io.on( "connection", function( socket )
 {
 
 
-    console.log( "A user connected" , dataStore.getUserNames());
+    console.log( "A user connected" , dataStore.userMgmt.getUserNames());
+    if(dataStore.comments.getAllComments().length <=0 )
+    {
+        dataStore.comments.setUpTestComments();
+        console.log(dataStore.comments.getAllComments()) ;
+    }
 
-    socket.emit('getStatsAtStart',dataStore.getUserNames()) ;
+
+    socket.emit('getStatsAtStart',dataStore.userMgmt.getUserNames()) ;
+    socket.emit('getAllComments',dataStore.comments.getAllComments()) ;
+
     socket.on( 'userAdd', function( data )
     {
-        dataStore.addNewUser(data) ;
+        dataStore.userMgmt.addNewUser(data) ;
         allClients.push({"socketId":socket.id, "userName":data });
-        socket.emit('userCountChanged',dataStore.getUserNames()) ;
-        socket.broadcast.emit('userCountChanged',dataStore.getUserNames()) ;
+        socket.emit('userCountChanged',dataStore.userMgmt.getUserNames()) ;
+        socket.broadcast.emit('userCountChanged',dataStore.userMgmt.getUserNames()) ;
 
        var newUser = allClients.find(function (aUser) {
             return aUser.socketId === socket.id;
@@ -59,12 +50,10 @@ io.on( "connection", function( socket )
             return aUser.socketId === socket.id;
         });
         if(discUserObj){
-            dataStore.removeUser(discUserObj.userName) ;
-            socket.emit('userCountChanged',dataStore.getUserNames()) ;
-            socket.broadcast.emit('userCountChanged',dataStore.getUserNames()) ;
+            dataStore.userMgmt.removeUser(discUserObj.userName) ;
+            socket.emit('userCountChanged',dataStore.userMgmt.getUserNames()) ;
+            socket.broadcast.emit('userCountChanged',dataStore.userMgmt.getUserNames()) ;
         }
-
-
 
    });
 

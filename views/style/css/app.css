@@ -1,0 +1,61 @@
+
+.body{
+    color:rgb(92, 80, 63) !important;
+}
+
+.jumbotron.custom {
+    margin-bottom: 0 !important;
+    height: 16em;
+    background-color: #eeedce;
+    position: relative;
+ }
+
+.jumbotron.custom div{
+    position: absolute;
+    top: -65px;
+    left: -30px;
+    background-color: rgba(240, 173, 78, 0.43);
+    height: 318px;
+    width: 550px;
+    border-radius: 50%;
+}
+
+
+.jumbotron p.people{
+    position: absolute;
+    left: 12em;
+    color:rgba(92, 80, 63, 0.43);
+}
+
+.jumbotron.custom span{
+    position: absolute;
+    font-weight: bold;
+    font-size:1.6em ;
+    color: #fff;
+}
+
+.app-dark{
+    color:rgba(92, 80, 63, 0.43);
+}
+
+.app-btn-dark {
+    background-color: rgba(240, 173, 78, 0.43);
+    color:rgb(92, 80, 63);
+}
+
+.app-text-dark{
+    color:rgb(92, 80, 63);
+}
+
+.app-inline{
+    display: inline-block;
+}
+
+
+
+.app-user{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    max-width: 500px;
+}
