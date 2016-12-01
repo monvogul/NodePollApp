@@ -19,7 +19,8 @@ var path = require('path');
 // load the single view file (angular will handle the page changes on the front-end)
     router.get("*", function (req, res) {
         //   res.sendFile(path.resolve("../views/index.html"));
-        res.sendFile(__dirname + '../views/index.html');
+        console.log(__dirname);
+        res.sendFile('../views/index.html');
 
     });
 
