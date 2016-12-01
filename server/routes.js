@@ -20,7 +20,8 @@ var path = require('path');
     router.get("*", function (req, res) {
         //   res.sendFile(path.resolve("../views/index.html"));
         console.log(__dirname);
-        res.sendFile('../views/index.html');
+        res.sendFile(__dirname + "/views/" + "index.html" );
+      
 
     });
 
