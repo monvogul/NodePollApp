@@ -6,7 +6,7 @@ var dataStore = require("./store") ;
 
 var app = express(); //express initialise
 app.use(express.static('../views')); // set the static files location
-
+app.use(router); //testing for heroku
 var server_port = process.env.YOUR_PORT || process.env.PORT || 8080;
 var server_host = process.env.YOUR_HOST || '0.0.0.0';
 
