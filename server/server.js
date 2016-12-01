@@ -7,8 +7,11 @@ var dataStore = require("./store") ;
 var app = express(); //express initialise
 app.use(express.static('../views')); // set the static files location
 
-var server = app.listen(process.env.PORT || 8080,function(){ //server listening on 8080
-    console.log("Server listening on: http://localhost:%s", 8080);
+var server_port = process.env.YOUR_PORT || process.env.PORT || 8080;
+var server_host = process.env.YOUR_HOST || '0.0.0.0';
+
+var server = app.listen(server_port,server_host,function(){
+    console.log('Listening on port %d', server_port);
 })
 
 // Socket.io
