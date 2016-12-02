@@ -2,7 +2,7 @@ var express = require("express") ;
 var router = express.Router();
 var path = require('path');
 
-  router.get("/test", function (req, res, next) {
+ router.get("/test", function (req, res, next) {
         var Person = {
             "name": "Mansi",
             "age": "34",
@@ -15,12 +15,8 @@ var path = require('path');
         res.json(totalUsers);
     });
 
-
-// load the single view file (angular will handle the page changes on the front-end)
-    router.get("*", function (req, res) {
-        //   res.sendFile(path.resolve("../views/index.html"));
-        console.log(__dirname);
-        res.sendFile(path.resolve('views/index.html'));
+    router.get("/", function (req, res) {
+             res.sendFile(path.resolve('index.html'));
     });
 
 
