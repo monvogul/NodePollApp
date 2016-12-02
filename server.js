@@ -28,7 +28,6 @@ io.on( "connection", function( socket )
     if(dataStore.comments.getAllComments().length <=0 )
     {
         dataStore.comments.setUpTestComments();
-        console.log(dataStore.comments.getAllComments()) ;
     }
 
 

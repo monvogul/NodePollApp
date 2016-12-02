@@ -13,7 +13,75 @@
 <link rel="stylesheet" href="views/style/css/app.css">
 
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script  src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/flot/0.8.2/jquery.flot.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/flot/0.8.2/jquery.flot.pie.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/flot/0.8.2/jquery.flot.resize.min.js"></script>
 
+<script>
+
+// real-time chart
+// we use an inline data source in the example, usually data would
+// be fetched from a server
+var data = [], totalPoints = 200;
+function getRandomData() {
+
+if (data.length > 0)
+data = data.slice(1);
+
+// do a random walk
+while (data.length < totalPoints) {
+var prev = data.length > 0 ? data[data.length - 1] : 50;
+var y = prev + Math.random() * 10 - 5;
+if (y < 0)
+y = 0;
+if (y > 100)
+y = 100;
+data.push(y);
+}
+
+// zip the generated y values with the x values
+var res = [];
+for (var i = 0; i < data.length; ++i)
+res.push([i, data[i]])
+
+    return res;
+
+}
+
+// setup control widget
+var updateInterval = 500;
+$("#updateInterval").val(updateInterval).change(function () {
+var v = $(this).val();
+if (v && !isNaN(+v)) {
+updateInterval = +v;
+if (updateInterval < 1)
+updateInterval = 1;
+if (updateInterval > 2000)
+updateInterval = 2000;
+$(this).val("" + updateInterval);
+}
+});
+
+// setup plots
+var options = {
+grid:{borderColor:'#ccc'},
+series:{shadowSize:0,color:"#33ff33"},
+yaxis:{min:0,max:100},
+xaxis:{show:true}
+};
+
+
+var plot ;
+function update() {
+ plot = $.plot($("#chart1"), [ getRandomData() ], options);
+plot.setData([ getRandomData() ]);
+plot.draw();
+setTimeout(update, updateInterval);
+}
+update();
+
+</script>
 
 <body ng-app="app" ng-controller="myctrl">
 <div class="wrapper">
@@ -27,9 +95,9 @@
                 </p>
                 <h1 class="text-xl-center app-dark">Vox Populi</h1> <br/> <h3 class="text-xl-center app-dark">Have your say NOW</h3>
                 <p  ng-show="!nameset" class="text-xl-right"><button class="btn app-btn-dark rounded" ng-click="setUserName()"><i class="fa fa-user">Sign In</i></button>
-                    <input type="text" class="app-text-dark" ng-model="username"/>
+                    <input type="text" class="" ng-model="username"/>
                 </p>
-                <h6 ng-show="nameset" class="text-xl-right app-text-dark"> Logged in as {{username}}.  </h6>
+                <h6 ng-show="nameset" class="text-xl-right "> Logged in as {{username}}.  </h6>
             </div>
         </div>
 
@@ -38,24 +106,35 @@
                 <div class="col-lg-12 col-md-12">
                     <div class="col-lg-4 col-md-4">
                         <div class="app-panel">
-                            <h2 class="text-lg-center mark">Activity <i class="fa fa-line-chart" ></i> </h2>
-                            <div class="">
-                            adfasd
+                            <h2 class="text-lg-center mark">Today's Vote <i class="fa fa-legal"></i> </h2>
+                            <h5 class="">What do you think is the biggest problem of 21st Century? </h5>
+                            <input class="radio" type="radio" name="abc" value="Poverty"> Poverty <br>
+                            <input type="radio" name="abc" value="Child Labour"> Child Labour <br>
+                            <input type="radio" name="abc" value="Climate Change"> Climate Change <br>
+                            <input type="radio" name="abc" value="Demining"> Demining
+                            <div>
+                                <button class="btn btn-outline-warning m-1" value="Vote">Vote</button>
+                                <span class="app-text-mute output">100 Votes . 2 days left</span>
                             </div>
                         </div>
-                    </div>
+                     </div>
+
                     <div class="col-lg-5 col-md-4">
-                        two
+                        <div class="app-panel">
+                            <h2 class="text-lg-center mark">Poll Results <i class="fa fa-line-chart" ></i> </h2>
+                            <div id="chart1" style="width:100%;height:220px;"></div>
+
+                        </div>
                     </div>
 
                     <div class="col-lg-3 col-md-4" style="padding: 1.5rem;">
                         <div class="card card-block">
-                            <h4 class="card-text app-text-dark">Chat <i class="fa fa-comments-o"></i> </h4>
+                            <h4 class="card-text ">Chat <i class="fa fa-comments-o"></i> </h4>
                             <hr>
                             <div ng-repeat="aComment in comments | orderBy: '-dtm' " ng-class-even="'mark'" width="100%">
 
                                 <div style="width: 100%;">
-                                  <img width="32px" class="img-thumbnail" src="http://www.gravatar.com/avatar/f3b5862b4d38b9b85ce48513e187c8c9.jpg?s=24&d=mm"/>
+                                  <img width="32px" class="rounded-circle" src="http://www.gravatar.com/avatar/f3b5862b4d38b9b85ce48513e187c8c9.jpg?s=24&d=mm"/>
                                   <span class="text-lg-left text-danger app-inline" style="width:50%"><a class="app-user" ng-href="/users/{{aComment.user}}"  >{{aComment.user}}</a>   </span>
                                   <span class="text-xs-right text-muted small app-inline"  style="width:40%">{{aComment.formattedDtm}}</span></div>
 
