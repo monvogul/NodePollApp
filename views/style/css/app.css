@@ -1,5 +1,7 @@
 body{
     margin-top: 27em;
+    color:rgb(92, 80, 63) !important;
+
 }
 
 .wrapper{
@@ -27,7 +29,7 @@ body{
     background-color: transparent;
     margin-bottom: 0 !important;
     position: relative;
-    transition: height .2s linear;
+    transition: height 500ms ease-out;
 
 }
 
@@ -88,7 +90,7 @@ body{
 .app-panel {
     margin-top: 10px;
     margin-bottom: 10px;
-    padding:10px;
+    padding: 1.25rem;
     background-color: #ffffff;
     border: 1px solid #dddddd;
     border-radius: 4px;
