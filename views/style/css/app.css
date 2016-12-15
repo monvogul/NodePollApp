@@ -1,46 +1,64 @@
 body{
-    color:rgb(92, 80, 63) !important;
+    margin-top: 27em;
 }
 
+.wrapper{
+    position: fixed;
+    width: 100%;
+    top:0;
+    left:0;
+    background: url("../../images/people.jpg") center center repeat  ;
+    background-size: cover;
+    z-index:1000 ;
+
+}
+
+.mask{
+    width: 100%;
+    background: #38a7bb;
+    opacity: .9;
+
+}
+
+.header{
+    color: #f7f7f9; font-family: 'PT Sans Caption', Helvetica, Arial, sans-serif; margin: 0 0 18px;
+}
 .jumbotron.custom {
+    background-color: transparent;
     margin-bottom: 0 !important;
-    height: 16em;
-    background-color: #eeedce;
     position: relative;
- }
+    transition: height .2s linear;
 
-.jumbotron.custom div{
-    position: absolute;
-    top: -65px;
-    left: -30px;
-    background-color: rgba(240, 173, 78, 0.43);
-    height: 318px;
-    width: 550px;
-    border-radius: 50%;
 }
 
-
-.jumbotron p.people{
-    position: absolute;
-    left: 12em;
-    color:rgba(92, 80, 63, 0.43);
+.jumbotron.custom.variable-height-tall{
+    height: 26em;
 }
 
-.jumbotron.custom span{
-    position: absolute;
-    font-weight: bold;
-    font-size:1.6em ;
-    color: #fff;
+.jumbotron.custom.variable-height-small{
+    height: 13em ;
 }
 
 .app-dark{
     color:rgba(92, 80, 63, 0.43);
 }
 
-.app-btn-dark {
-    background-color: rgba(240, 173, 78, 0.43);
-    color:rgb(92, 80, 63);
+.app-light{
+    color:#fff;
 }
+
+.app-btn-dark-outline {
+    background-color: transparent;
+    color: #38a7bb ;
+    border-color: #3388aa;
+}
+
+.app-btn-dark-outline:hover {
+    color:#fff;
+    background-color: #38a7bb;
+    border-color: #3388aa;
+}
+
 
 .app-text-mute{
     color:#8899A6
@@ -49,6 +67,16 @@ body{
 .app-inline{
     display: inline-block;
 }
+
+.app-content{
+    padding-top: 30px;
+    margin-bottom: 40px;
+    -webkit-transform: translateZ(0);
+    padding: 56px 14px 15px;
+    position: relative;
+}
+
+
 
 .app-user{
     text-overflow: ellipsis;
@@ -68,3 +96,19 @@ body{
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
 }
 
+
+.app-login {
+    position: absolute;
+    bottom: 1em;
+    right: 1em;
+}
+
+.app-login * {
+    color: #fff;
+}
+ a:hover {
+   text-decoration: none !important;
+}
+.app-login i:hover{
+ font-weight: bold;
+}
