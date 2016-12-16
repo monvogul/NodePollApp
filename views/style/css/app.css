@@ -29,7 +29,7 @@ body{
     background-color: transparent;
     margin-bottom: 0 !important;
     position: relative;
-    transition: height 500ms ease-out;
+    transition: height 300ms linear;
 
 }
 

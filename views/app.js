@@ -1,12 +1,23 @@
 
 var app = angular.module("app", []);
-app.controller("myctrl", function($scope,socket) {
+
+app.controller("myctrl", function($scope,socket,$http) {
     $scope.users = [];
     $scope.nameset = false;
     $scope.username= "" ;
     $scope.errors = {"USER_IN_USE": "Username in use"} ;
     $scope.error = null;
     $scope.comments = [] ;
+    $scope.userFlagSrc = '' ;
+
+    $http.jsonp('http://api.wipmania.com/jsonp?callback=jsop_callback') ;
+    jsop_callback= function(data) {
+        console.log(data.address.country_code);
+        if(data.address &&  data.address.country_code) {
+            $scope.userFlagSrc = "http://www.geonames.org/flags/x/" + data.address.country_code.toLowerCase() + ".gif" ;
+            console.log( $scope.userFlagSrc) ;
+        }
+    }
 
     socket.on('getStatsAtStart',function(data){
         $scope.users= data.slice(0) ;
