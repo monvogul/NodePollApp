@@ -19,13 +19,18 @@ app.controller("myctrl", function($scope,socket,$http) {
         }
     }
 
+    $http.get("/api/comments")
+        .then(function(response) {
+            $scope.comments = response.data ;
+        });
+
     socket.on('getStatsAtStart',function(data){
         $scope.users= data.slice(0) ;
     })
 
-    socket.on('getAllComments',function(data){
-        $scope.comments = data.slice(0) ;
-    })
+    // socket.on('getAllComments',function(data){
+    //     $scope.comments = data.slice(0) ;
+    // })
 
     $scope.setUserName = function() {
         if($scope.users && $scope.users.indexOf($scope.username) === -1) {
@@ -43,6 +48,20 @@ app.controller("myctrl", function($scope,socket,$http) {
 
 });
 
+
+app.directive("cmtFormatter",function(){
+        return {
+            restrict:'EA',
+            scope: {
+                aComment: '=cmt'
+            },
+            link: function (scope, element, attributes) {
+              var formattedCmt  = linkify(scope.aComment) ;
+              element.html(formattedCmt )   ;
+            }
+
+        } ;
+})
 
 app.factory('socket', function($rootScope) {
     var socket = io.connect();

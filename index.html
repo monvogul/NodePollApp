@@ -9,6 +9,8 @@
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script><!-- load angular -->
 <script src="/socket.io/socket.io.js"></script>
 <script src="views/app.js"></script>
+<script src="views/utils/linkify.js"></script>
+
 <link rel="stylesheet" href="views/style/css/bootstrap4.css"><!-- load bootstrap -->
 <link rel="stylesheet" href="views/style/css/app.css">
 
@@ -139,7 +141,7 @@ $(window).scroll(function (event) {
 
         <div class="container-fluid" id="appContent">
                 <div class="col-lg-12 col-md-12">
-                    <div class="col-lg-4 col-md-4">
+                    <div class="col-lg-6 col-md-6">
                         <div class="app-panel">
                             <h2 class="text-lg-center">Today's Vote <i class="fa fa-legal"></i> </h2>
                             <hr>
@@ -155,7 +157,7 @@ $(window).scroll(function (event) {
                         </div>
                      </div>
 
-                    <div class="col-lg-5 col-md-4">
+                    <div class="col-lg-6 col-md-6">
                         <div class="app-panel">
                             <h2 class="text-lg-center">Poll Results <i class="fa fa-line-chart" ></i> </h2>
                             <hr>
@@ -164,32 +166,31 @@ $(window).scroll(function (event) {
                         </div>
                     </div>
 
-                    <div class="col-lg-3 col-md-4">
-                        <div class="app-panel">
-                            <h2 class="text-lg-center ">Chat <i class="fa fa-comments-o"></i> </h2>
-                            <hr>
-                            <div ng-repeat="aComment in comments | orderBy: '-dtm' " ng-class-even="'mark'" width="100%">
-
-                                <div style="width: 100%;">
-                                    <img width="32px" class="rounded-circle" src="http://www.gravatar.com/avatar/f3b5862b4d38b9b85ce48513e187c8c9.jpg?s=24&d=mm"/>
-                                    <span class="text-lg-left text-danger app-inline" style="width:50%"><a class="app-user" ng-href="/users/{{aComment.user}}"  >{{aComment.user}}</a>   </span>
-                                    <span class="text-xs-right text-muted small app-inline"  style="width:40%">{{aComment.formattedDtm}}</span></div>
-
-                                <div>{{aComment.cmt}}  <a href="/topics/{{aComment.label}}"> <span class="tag tag-info">#{{aComment.label}}</span> </a> </div>
-
-                            </div>
-                            <hr>
-                            <div> <a href="#">More..</a> </div>
-          
-                     </div>
-
-
-
-                    </div>
                 </div>
 
 
         </div> <!-- container div-->
+
+    <div class="col-lg-3 col-md-4">
+
+
+            <div ng-repeat="aComment in comments | orderBy: '-create_dtm' ">
+                <div class="app-panel">
+
+                <div style="width: 100%;">
+                    <img width="32px" class="rounded-circle" src="http://www.gravatar.com/avatar/f3b5862b4d38b9b85ce48513e187c8c9.jpg?s=24&d=mm" ng-src="{{aComment.user.profile_img_url}}"/>
+                    <span class="text-lg-left text-danger app-inline" style="width:50%"><a class="app-user" ng-href="/users/{{aComment.user.userId}}"  >{{aComment.user.userId}}</a>   </span>
+                    <span class="text-xs-right text-muted small app-inline"  style="width:40%">{{aComment.create_dtm}}</span></div>
+
+                <cmt-formatter cmt="aComment"></cmt-formatter>
+                <!-- <div>{{aComment.comment}} <span ng-repeat="hashtag in aComment.hashtags" > <a href="/topics/{{hashtag.text}}"> <span class="tag tag-info">#{{hashtag.text}}</span> </a></span> </div> -->
+
+            </div>
+          </div>
+
+
+
+    </div>
 
 </body>
 

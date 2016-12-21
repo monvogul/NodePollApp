@@ -25,14 +25,14 @@ io.on( "connection", function( socket )
 
 
     console.log( "A user connected" , dataStore.userMgmt.getUserNames());
-    if(dataStore.comments.getAllComments().length <=0 )
-    {
-        dataStore.comments.setUpTestComments();
-    }
+    // if(dataStore.comments.getAllComments().length <=0 )
+    // {
+    //     dataStore.comments.setUpTestComments();
+    // }
 
 
     socket.emit('getStatsAtStart',dataStore.userMgmt.getUserNames()) ;
-    socket.emit('getAllComments',dataStore.comments.getAllComments()) ;
+  //  socket.emit('getAllComments',dataStore.comments.getAllComments()) ;
 
     socket.on( 'userAdd', function( data )
     {

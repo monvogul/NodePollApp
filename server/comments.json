@@ -1,0 +1,18 @@
+[
+  {
+    "id" :1,
+    "location" : {"country":"aus"},
+    "create_dtm" : "2015-02-04 22:45:00",
+    "comment_withheld" : false,
+    "text": "Qui dolor in #exercitation #sit veniam adipisicing reprehenderit tempor. Est enim irure sint veniam id et et excepteur nulla aliqua mollit nulla dolore velit. Eiusmod laborum minim et sunt culpa aliquip. Esse culpa consequat non ad duis ex non velit. In occaecat ex excepteur velit amet eiusmod mollit cupidatat aliquip velit ex culpa ullamco. Enim elit aliqua quis in ut magna",
+    "user":{"id":1,
+            "location":"",
+            "name":"Reeves Jones",
+            "userId":"reeveJ",
+             "profile_img_url":""
+      },
+    "hashtags":[{"indices":[13,26],"text":"exercitation"} ,{"indices":[27,31],"text":"exercitation"}]
+
+  }
+
+]

@@ -1,6 +1,19 @@
 var express = require("express") ;
 var router = express.Router();
 var path = require('path');
+var jsonfile = require('jsonfile') ;
+
+
+var cmtsFile = 'server/comments.json';
+
+//TODO: Later on find a way to cache comments in the server
+router.get("/api/comments", function (req, res, next){
+
+    jsonfile.readFile(cmtsFile, function(err, obj) {
+      res.json(obj);
+    });
+
+});
 
  router.get("/test", function (req, res, next) {
         var Person = {
